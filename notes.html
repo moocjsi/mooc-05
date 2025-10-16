@@ -1,0 +1,33 @@
+<!-- the file notes.html is never used in your current setup.
+
+Even though it exists at:
+/c/Users/Jarmo/mooc-fs/client-server02/exampleapp/notes.html
+
+Your server doesn't reference or serve it anywhere in index.js. Instead, when a user visits /notes, the server sends back a dynamically generated HTML string stored in the notes_page variable:
+
+router.get('/notes', (req, res) => {
+  res.send(notes_page)
+})
+So unless you explicitly change your server to serve notes.html — for example, using:
+
+res.sendFile(path.join(__dirname, 'exampleapp', 'notes.html'))
+— it remains unused.  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/exampleapp/main.css" />
+  <script type="text/javascript" src="/exampleapp/main.js"></script>
+</head>
+<body>
+  <div class='container'>
+    <h1>Notes1b</h1>
+    <div id='notes'>
+    </div>
+    <form action='/exampleapp/new_note' method='POST'>
+      <input type="text" name="note"><br>
+      <input type="submit" value="Save">
+    </form>
+  </div>
+</body>
+</html>
